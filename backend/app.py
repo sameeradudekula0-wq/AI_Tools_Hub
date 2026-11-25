@@ -98,9 +98,10 @@ def login():
     return jsonify({"message": "Invalid email or password"}), 401
 
 
+# Create database tables
+with app.app_context():
+    db.create_all()
+
+# Run application locally
 if __name__ == "__main__":
-    with app.app_context():
-        db.create_all()
-
     app.run(debug=True, port=5000)
-
